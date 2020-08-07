@@ -1,0 +1,53 @@
+data:
+  nonparallel:
+    root: /home/ubuntu/nn/data/jvs/jvs_mcep_16k_40
+    t_size: 1024
+  parallel:
+    root: /home/ubuntu/nn/data/jvs/jvs_mcep_16k_40
+dataloader:
+  nonparallel:
+    num_workers: 4
+    batch_size: 16
+    shuffle: true
+  parallel:
+    num_workers: 4
+    batch_size: 8
+    shuffle: true
+training:
+  checkpoints: checkpoints
+  save_every: 500
+  checkpoint_every: 10000
+  max_itr: 200000
+model:
+  lambda:
+    lambda_mse: 1
+    lambda_dtw: 10
+    lambda_kl: 0.1
+  dtw:
+    gamma: 0.1
+  SpeakerEncoder:
+    c_in: 40
+    c_h: 96
+    c_out: 2
+    c_k: 16
+    n_layers: 5
+  ContentEncoder:
+    c_in: 40
+    c_h: 96
+    c_out: 2
+    c_k: 16
+    n_layers: 5
+  Decoder:
+    c_w: 2
+    c_z: 2
+    c_k: 16
+    c_h: 96
+    c_out: 40
+    n_head: 1
+    attention_alpha: 5
+    n_layers: 5
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+grad_norm:
+  max_norm: 5

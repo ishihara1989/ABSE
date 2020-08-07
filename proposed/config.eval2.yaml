@@ -1,0 +1,6 @@
+root: /home/ubuntu/nn/data/jvs/jvs_mcep_16k_40
+result_dir: /home/ubuntu/nn/data/jvs/nvb_result
+ut_min: 91
+ut_max: 100
+sp_min: 91
+sp_max: 100
